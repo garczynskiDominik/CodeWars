@@ -12,12 +12,8 @@ public class SplitStrings {
     }
 
     public static String[] solution(String s) {
-        String tex = "abc";
-        if (tex.length() % 2 != 0) {
-            tex += "_";
-        }
-        String[] pairLetters = tex.split("(?<=\\G.{2})");
-        return pairLetters;
+        s = (s.length() % 2 == 0)?s:s+"_";
+        return s.split("(?<=\\G.{2})");
     }
 }
 
