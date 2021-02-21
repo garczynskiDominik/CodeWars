@@ -11,24 +11,15 @@ public class PersistentBugger {
     }
 
     public static int persistence(long n) {
-        int counter = 0;
-        while (n > 9) {
-            List<Integer> vector = new ArrayList<>();
-            counter++;
 
-            while (n > 0) {
-                vector.add((int) (n % 10));
-                n /= 10;
-            }
-            int result = 1;
-            for (Integer integer : vector) {
-                result *= integer;
-            }
-            n = result;
-        }
-        return counter ;
+        long m = 1;
+        long r = n;
+        if (r / 10 == 0)
+            return 0;
+        for (r = n; r != 0; r /= 10)
+            m *= r % 10;
+        return persistence(m) + 1;
     }
-
 }
 
 
