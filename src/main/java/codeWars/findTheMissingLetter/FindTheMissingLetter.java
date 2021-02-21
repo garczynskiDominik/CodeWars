@@ -7,13 +7,12 @@ public class FindTheMissingLetter {
     }
 
     public static char findMissingLetter(char[] array) {
-        int result = 0;
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i + 1] - array[i] != 1) {
-                result = array[i] + 1;
-            }
+        char expectableLetter = array[0];
+        for(char letter : array){
+            if(letter != expectableLetter) break;
+            expectableLetter++;
         }
-        return (char) result;
+        return expectableLetter;
     }
 }
 
