@@ -15,23 +15,10 @@ public class Meeting {
     }
 
     public static String meeting(String s) {
-        int counter = 0;
-        List<String> firstNamesAndLastNames = Arrays.asList(s.split(";"));
-
-        while (counter < firstNamesAndLastNames.size()) {
-            List<String> helper = Arrays.asList(firstNamesAndLastNames.get(counter).split(":"));
-            firstNamesAndLastNames.set(counter, "(" + helper.get(1).toUpperCase() + ", " + helper.get(0).toUpperCase() + ")");
-            counter++;
-        }
-        Collections.sort(firstNamesAndLastNames);
-
-        StringBuilder sb = new StringBuilder();
-        for (String lastNameAndFirstNAme : firstNamesAndLastNames) {
-            sb.append(lastNameAndFirstNAme);
-
-        }
-
-        return sb.toString();
+        return Arrays.stream(s.toUpperCase().split(";"))
+                .map(guest -> guest.replaceAll("(\\w+):(\\w+)", "($2, $1)"))
+                .sorted()
+                .collect(Collectors.joining(""));
     }
 }
 
