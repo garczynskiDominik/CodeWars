@@ -10,21 +10,15 @@ public class Mumbling {
     }
 
     public static String accum(String s) {
-        List<String> lettersFromText = Arrays.asList(s.split(""));
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < lettersFromText.size(); i++) {
-            int counter = 1;
-            sb.append(lettersFromText.get(i).toUpperCase());
-
-            while (counter <= i) {
-                sb.append(lettersFromText.get(i).toLowerCase());
-                counter++;
-            }
-            if (i < lettersFromText.size() - 1) {
-                sb.append("-");
-            }
+        StringBuilder bldr = new StringBuilder();
+        int i = 0;
+        for(char c : s.toCharArray()) {
+            if(i > 0) bldr.append('-');
+            bldr.append(Character.toUpperCase(c));
+            for(int j = 0; j < i; j++) bldr.append(Character.toLowerCase(c));
+            i++;
         }
-        return sb.toString();
+        return bldr.toString();
     }
 }
 
