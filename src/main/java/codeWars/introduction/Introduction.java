@@ -6,14 +6,7 @@ public class Introduction {
     }
 
     public static int century(int number) {
-        if (number == 0) return 1;
-
-        if (number % 100 == 0) {
-            number = number / 100;
-        } else {
-            number = (number / 100) + 1;
-        }
-        return number;
+        return (number + 99) / 100;
 
     }
 
