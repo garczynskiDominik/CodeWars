@@ -13,17 +13,11 @@ public class SumsOfParts {
     }
 
     public static int[] sumParts(int[] ls) {
-        int[] outputTable = new int[ls.length + 1];
-        int outputTableIndex = 0;
-        if (ls.length == 0) {
-            return new int[]{0};
+        int[] result = new int[ls.length+1];
+        for(int i = ls.length-1; i >= 0; --i) {
+            result[i] = result[i+1] + ls[i];
         }
-        outputTable[outputTableIndex] = Arrays.stream(ls).sum();
-        while (outputTableIndex < ls.length) {
-            outputTableIndex++;
-            outputTable[outputTableIndex] = outputTable[outputTableIndex - 1] - ls[outputTableIndex - 1];
-        }
-        return outputTable;
+        return result;
     }
 }
 
