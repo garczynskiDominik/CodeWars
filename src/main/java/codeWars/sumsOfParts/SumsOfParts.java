@@ -13,23 +13,17 @@ public class SumsOfParts {
     }
 
     public static int[] sumParts(int[] ls) {
-        List<Integer> sumsFromOneIterate= new ArrayList<>();
-        List<Integer> inputArray = Arrays.stream(ls).boxed().collect(Collectors.toList());
-
-        while (!inputArray.isEmpty()) {
-            Integer sum = inputArray.stream()
-                    .mapToInt(Integer::intValue)
-                    .sum();
-
-            sumsFromOneIterate.add(sum);
-            inputArray.remove(0);
+        int[] outputTable = new int[ls.length + 1];
+        int outputTableIndex = 0;
+        if (ls.length == 0) {
+            return new int[]{0};
         }
-        if (inputArray.isEmpty()) {
-            sumsFromOneIterate.add(0);
+        outputTable[outputTableIndex] = Arrays.stream(ls).sum();
+        while (outputTableIndex < ls.length) {
+            outputTableIndex++;
+            outputTable[outputTableIndex] = outputTable[outputTableIndex - 1] - ls[outputTableIndex - 1];
         }
-        return sumsFromOneIterate.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        return outputTable;
     }
 }
 
