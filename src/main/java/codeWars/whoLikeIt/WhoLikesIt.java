@@ -3,7 +3,7 @@ package src.main.java.codeWars.whoLikeIt;
 public class WhoLikesIt {
     public static void main(String[] args) {
         System.out.printf(whoLikesIt("Dominik", "Tomek", "Krzysiek"));
-
+        System.out.println();
     }
 
     public static String whoLikesIt(String... names) {
