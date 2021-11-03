@@ -1,4 +1,4 @@
-package src.main.java;
+package src.main.java.rekrutacje.gomez;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
